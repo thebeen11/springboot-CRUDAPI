@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -40,7 +41,7 @@ public class Product implements Serializable {
     @ManyToOne
     private Category category;
 
-
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "tbl_product_supplier", 

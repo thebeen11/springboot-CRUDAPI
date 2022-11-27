@@ -1,5 +1,7 @@
 package com.app.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ResponseData;
+import com.app.dto.SearchData;
 import com.app.dto.SupplierData;
 import com.app.models.entity.Supplier;
 import com.app.services.SupplierService;
@@ -81,5 +84,15 @@ public class SupplierController {
         responseData.setPayload(supplierService.save(supplier, false));
 
         return ResponseEntity.ok(responseData);
+    }
+
+    @PostMapping("search/email")
+    public Supplier findByEmail(@RequestBody SearchData searchData){
+        return supplierService.findByEmail(searchData.getSearchKey());
+    }
+
+    @PostMapping("search/name")
+    public List<Supplier> findByNameContains(@RequestBody SearchData searchData){
+        return supplierService.findByNameContains(searchData.getSearchKey());
     }
 }

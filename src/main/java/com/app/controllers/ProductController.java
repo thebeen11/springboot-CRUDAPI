@@ -97,4 +97,9 @@ public class ProductController {
     public List<Product> getProductBySupplier(@PathVariable Long supplierId){
         return productService.findBySupplier(supplierId);
     }
+
+    @GetMapping("/category/{categoryId}")
+    public List<Product> getProductsByCategory(@PathVariable Long categoryId){
+        return productService.finndByCategory(categoryId);
+    }
 }

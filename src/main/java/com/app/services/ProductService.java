@@ -67,4 +67,8 @@ public class ProductService {
         }
 
     }
+
+    public List<Product> finndByCategory(Long id) {
+        return productRepo.findProductByCategoryId(id);
+    }
 }

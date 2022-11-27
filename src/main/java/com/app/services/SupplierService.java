@@ -1,5 +1,6 @@
 package com.app.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -35,5 +36,12 @@ public class SupplierService {
     public void removeOne(Long id){
         supplierRepo.deleteById(id);
     }
+
+    public Supplier findByEmail(String Email){
+        return supplierRepo.findByEmail(Email);
+    }
     
+    public List<Supplier> findByNameContains(String name){
+        return supplierRepo.findByNameContains(name);
+    }
 }
